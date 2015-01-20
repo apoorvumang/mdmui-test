@@ -1,0 +1,48 @@
+{
+	"form" :
+	{
+		"fields":
+		[
+			{
+				"label": " enter ABC",
+				"name": "abc",
+				"id": "abc",
+				"type": "text",
+				"required": true
+
+			},
+			{
+				"label": " enter PQR",
+				"name": "pqr",
+				"id": "pqr",
+				"type": "email",
+				"required": true
+
+			}
+			,
+			{
+				"label":"Choose blah",
+				"name":"xyz",
+				"id":"xyz",
+				"type":"select",
+				"required":true,
+				"options":
+				[
+					{"value":"1",
+						"id":"a"
+					},
+
+					{"value":"2",
+						"id":"b"
+					},
+
+					{"value":"3",
+						"id":"c"
+					}
+				]
+			}
+		],
+		"name":"EFG",
+		"id":"efg"
+	}
+}
