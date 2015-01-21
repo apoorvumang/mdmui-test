@@ -1,0 +1,54 @@
+{
+	form:{
+
+		fields :[
+					{
+						label:,
+						name:,
+						id:,
+						type:,
+						options:[
+							{
+								value:,
+								id:
+							},
+							{
+								value:,
+								id:
+							}, ...
+						],
+						required:,
+						validate:,
+						onerror:					
+					},
+					{
+						label:,
+						name:,
+						id:,
+						type:,
+						options:[
+							{
+								value:,
+								id:
+							},
+							{
+								value:,
+								id:
+							}, ...
+						],
+						required:,
+						validate:,
+						onerror:					
+					},...
+					
+		],
+		onsubmit:
+		{
+			url:,
+			success_msg:,
+			failure_msg:
+		}
+
+
+	}
+}
