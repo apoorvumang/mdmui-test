@@ -1,0 +1,46 @@
+<html>
+<head>
+	<title>MDM UI</title>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+	<script type="text/javascript" src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+	<script type="text/javascript" src="bower_components/tv4/tv4.js"></script>
+	<script type="text/javascript" src="bower_components/objectpath/lib/ObjectPath.js"></script>
+	<script type="text/javascript" src="bower_components/angular-schema-form/dist/schema-form.min.js"></script>
+	<script type="text/javascript" src="bower_components/angular-schema-form/dist/bootstrap-decorator.min.js"></script>
+	<script type="text/javascript" src="app.js"></script>
+	<link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body ng-app="mdm-ui">
+	<div class="container" ng-controller="FormController">
+		<div class="row">
+			<div class="col-md-4">
+				<h3>The Generated Form</h3>
+				<form sf-schema="schema" sf-form="form" sf-model="model"></form>
+			</div>
+			<div class="col-md-4">
+				<h3>JSON Schema</h3>
+				<textarea class="form-control" rows="15" id="schemaJson" ng-model="schemaJson"></textarea>
+			</div>
+			<div class="col-md-4">
+				<h3>JSON Form</h3>
+				<textarea class="form-control" rows="15" id="formJson" ng-model="formJson"></textarea>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<h3>Model</h3>
+				<pre>{{pretty()}}</pre>
+			</div>
+			<div class="col-md-4">
+				<h3>Load schema from file</h3>
+				<button ng-click="loadSchemaFromFile()">Load Schema</button>
+			</div>
+			<div class="col-md-4">
+				<h3>Load form from file</h3>
+				<button ng-click="loadFormFromFile()">Load Form</button>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

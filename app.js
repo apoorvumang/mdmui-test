@@ -1,32 +1,51 @@
-var app=angular.module("sample",[]);
-app.controller("formController",function($scope,$http)
+var app = angular.module('mdm-ui', ['schemaForm']);
+app.controller('FormController', function($scope, $http) {
+  $scope.schema = {};
+  $scope.form = ["*"];
+  $scope.model = {};
+  $scope.$watch('schemaJson',function(val,old){
+    if (val && val !== old) {
+      try {
+        $scope.getSchema(JSON.parse($scope.schemaJson));
+      } catch (e){
+        console.log('unable to set schema');
+      }
+    }
+  });
+  $scope.$watch('formJson',function(val,old){
+    if (val && val !== old) {
+      try {
+        $scope.getForm(JSON.parse($scope.formJson));
+      } catch (e){
+        console.log('unable to set form');
+      }
+    }
+  });
+  $scope.pretty = function() {
+    return JSON.stringify($scope.model, undefined, 2, 2);
+  };
 
-{
-	$scope.json=""
-	$scope.show=true
-	$scope.show_form=false
+  $scope.getSchema=function(val) {
+    $scope.schema=val;
+  };
+  $scope.getForm = function(val) {
+    $scope.form = val;
+  };
 
-	$scope.getForm=function()
-	{
-		var response=$http.get("sample1.json")
-		response.success(function (data){
-			formObject=data
-			for (var i in formObject.form.fields)
-					{
-						if($.inArray(formObject.form.fields[i].type,["text","number","date","email","tel","time","url","search","range","password","month","file","datetime"] )>-1)
-						{
-							 formObject.form.fields[i].type2= formObject.form.fields[i].type
-							 formObject.form.fields[i].type="input"
+  $scope.loadSchemaFromFile = function() {
+    var response = $http.get("schema.json");
+    response.success(function(data)
+    {
+      $scope.schemaJson = JSON.stringify(data, undefined, 2, 2);
+    });
+  };
 
-						}
-					}
-			console.log(formObject)
-			$scope.json=formObject
-			$scope.show_form=true
-			$scope.name=$scope.json.form.name
-
-
-		} );
-	}
+  $scope.loadFormFromFile = function() {
+    var response = $http.get("form.json");
+    response.success(function(data)
+    {
+      $scope.formJson = JSON.stringify(data, undefined, 2, 2);
+    });
+  };
 });
-	
+
